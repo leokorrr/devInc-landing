@@ -43,13 +43,21 @@ export const AboutUs: React.FC = () => {
             )}
             <Box sx={{ fontSize: isLaptop ? '18px' : '20px', maxWidth: isTablet ? 'none' : '372px' }}>
               <Box component="p" sx={{ mt: isTablet ? 0 : '18px' }}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, orci
+                aliquet,  metus risus maximus nunc, sed eleifend tortor enim id nisl.
+              </Box>
+              <Box component="p" sx={{ mt: isTablet ? 0 : '18px' }}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, orci
+                aliquet,  metus risus maximus nunc, sed eleifend tortor enim id nisl.
+              </Box>
+              {/* <Box component="p" sx={{ mt: isTablet ? 0 : '18px' }}>
                 We are a polish community of programmers working together
                 to optimize your business, so you&apos;ll have more time for really important things
               </Box>
               <Box component="p">
                 We are experts in web applications. Out stack is HTML5, CSS3, JavaScript
                 (React, Node) and PHP (Symfony, Laravel, Magento 2).
-              </Box>
+              </Box> */}
               <Box sx={{ fontWeight: 'bold' }}>
                 Start your story with us!
               </Box>

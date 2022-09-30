@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Box } from '@mui/material'
 import React from 'react'
 import { Title } from '../../ui/components/Title'
@@ -6,17 +7,34 @@ import { FAQItem } from './FAQItem'
 const MOCK_FAQS = [
   {
     question: 'Question 1?',
-    answer: 'We are a polish community of programmers working together to help our clients to push their business forward.',
+    answer:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, orci aliquet,  metus risus maximus nunc, sed eleifend tortor enim id nisl.',
   },
   {
     question: 'Question 2?',
-    answer: 'We are a polish community of programmers working together to help our clients to push their business forward.',
+    answer:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, orci aliquet,  metus risus maximus nunc, sed eleifend tortor enim id nisl.',
   },
   {
     question: 'Question 3?',
-    answer: 'We are a polish community of programmers working together to help our clients to push their business forward.',
+    answer:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, orci aliquet,  metus risus maximus nunc, sed eleifend tortor enim id nisl.',
   },
 ]
+// const MOCK_FAQS = [
+//   {
+//     question: 'Question 1?',
+//     answer: 'We are a polish community of programmers working together to help our clients to push their business forward.',
+//   },
+//   {
+//     question: 'Question 2?',
+//     answer: 'We are a polish community of programmers working together to help our clients to push their business forward.',
+//   },
+//   {
+//     question: 'Question 3?',
+//     answer: 'We are a polish community of programmers working together to help our clients to push their business forward.',
+//   },
+// ]
 
 export const FAQ: React.FC = () => (
   <Box
@@ -28,25 +46,23 @@ export const FAQ: React.FC = () => (
       backgroundColor: '#F8F9FA',
     }}
   >
-    <Box sx={{
-      maxWidth: '1480px',
-      width: '100%',
-      px: '20px',
-    }}
+    <Box
+      sx={{
+        maxWidth: '1480px',
+        width: '100%',
+        px: '20px',
+      }}
     >
       <Title title="FAQ" size={2} />
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-        <Box sx={{
-          maxWidth: '960px',
-          width: '100%',
-        }}
+        <Box
+          sx={{
+            maxWidth: '960px',
+            width: '100%',
+          }}
         >
           {MOCK_FAQS.map((faq) => (
-            <FAQItem
-              key={faq.question}
-              question={faq.question}
-              answer={faq.answer}
-            />
+            <FAQItem key={faq.question} question={faq.question} answer={faq.answer} />
           ))}
         </Box>
       </Box>

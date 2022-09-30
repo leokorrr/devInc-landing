@@ -5,28 +5,28 @@ import { ProjectCard } from './ProjectCard'
 
 const mockedProjects = [
   {
-    name: 'Eca Invest',
-    link: 'https://eca-invest.pl/',
+    name: 'Project',
+    link: 'https://www.google.com/',
     thumbnail: 'https://i.pinimg.com/736x/e5/18/f6/e518f68fa36d349f313701f28465cc47.jpg',
   },
   {
-    name: 'Eca Invest 2',
-    link: 'https://eca-invest.pl/',
+    name: 'Project 2',
+    link: 'https://www.google.com/',
     thumbnail: 'https://wallpaperaccess.com/full/2029165.jpg',
   },
   {
-    name: 'Eca Invest 3',
-    link: 'https://eca-invest.pl/',
+    name: 'Project 3',
+    link: 'https://www.google.com/',
     thumbnail: 'https://i.pinimg.com/736x/e5/18/f6/e518f68fa36d349f313701f28465cc47.jpg',
   },
   {
-    name: 'Eca Invest 4',
-    link: 'https://eca-invest.pl/',
+    name: 'Project 4',
+    link: 'https://www.google.com/',
     thumbnail: 'https://wallpaperaccess.com/full/2029165.jpg',
   },
   {
-    name: 'Eca Invest 5',
-    link: 'https://eca-invest.pl/',
+    name: 'Project 5',
+    link: 'https://www.google.com/',
     thumbnail: 'https://i.pinimg.com/736x/e5/18/f6/e518f68fa36d349f313701f28465cc47.jpg',
   },
 ]
