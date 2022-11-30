@@ -2,7 +2,6 @@ import {
   Box, Button, Input, TextareaAutosize,
 } from '@mui/material'
 import React, { useState } from 'react'
-import IContactForm from './ContactForm.interface'
 
 const INPUTS = [
   {
@@ -24,9 +23,7 @@ const INPUTS = [
 
 const EMAIL_REGEX_PATTERN = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-export const ContactForm: React.FC<IContactForm> = (props) => {
-  const { isLaptop, isTablet, isMobile } = props
-
+export const ContactForm: React.FC = () => {
   const [formValues, setFormValues] = useState<any>({
     name: '',
     email: '',
@@ -70,8 +67,14 @@ export const ContactForm: React.FC<IContactForm> = (props) => {
   return (
     <Box sx={{
       backgroundColor: '#000000',
-      p: isTablet ? '20px' : '40px',
-      width: isLaptop ? '100%' : '990px',
+      p: {
+        laptop: '40px',
+        xs: '20px',
+      },
+      width: {
+        desktopSmall: '990px',
+        xs: '100%',
+      },
     }}
     >
       <Box
@@ -128,7 +131,11 @@ export const ContactForm: React.FC<IContactForm> = (props) => {
         <Box sx={{
           display: 'flex',
           flexDirection: 'row-reverse',
-          justifyContent: isMobile ? 'center' : 'flex-starts',
+          justifyContent: {
+            tablet: 'flex-starts',
+            xs: 'center',
+          },
+          // justifyContent: isMobile ? 'center' : 'flex-starts',
         }}
         >
           <Button
@@ -139,8 +146,14 @@ export const ContactForm: React.FC<IContactForm> = (props) => {
               backgroundColor: '#FFFFFF',
               fontWeight: 'bold',
               fontSize: '20px',
-              width: isMobile ? '100%' : '140px',
-              height: isMobile ? '40px' : '52px',
+              width: {
+                tablet: '140px',
+                xs: '100%',
+              },
+              height: {
+                tablet: '52px',
+                xs: '40px',
+              },
               borderRadius: '45px',
               textTransform: 'none',
               '&:hover': {

@@ -4,13 +4,9 @@ export const StyledProjectCard = styled.div`
   .project-card {
     width: 100%;
     height: 100%;
-    max-height: 300px;
+    /* max-height: 300px; */
     position: relative;
     overflow: hidden;
-
-    img {
-      width: 100%;
-    } 
 
     &__content {
       background-color: transparent;

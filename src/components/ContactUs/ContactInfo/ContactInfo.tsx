@@ -4,67 +4,73 @@ import {
   Box, List, ListItem,
 } from '@mui/material'
 import React from 'react'
-import IContactInfo from './ContactInfo.interface'
 
-export const ContactInfo: React.FC<IContactInfo> = (props) => {
-  const {
-    isLaptop, isLaptopSmall, isTablet,
-  } = props
-
-  const getWidth = () => {
-    let width
-
-    if (isLaptop && !isLaptopSmall) {
-      width = '80%'
-    } else if (isLaptopSmall) {
-      width = '85%'
-    } else {
-      width = '450px'
-    }
-
-    return width
-  }
-
-  const getFontSize = () => {
-    let fontSize
-
-    if (isLaptop && !isLaptopSmall) {
-      fontSize = '18px'
-    } else if (isTablet) {
-      fontSize = '16px'
-    } else {
-      fontSize = '20px'
-    }
-
-    return fontSize
-  }
-
-  return (
-    <Box sx={{ width: '100%', mt: isTablet ? '20px' : '192px', pb: isTablet ? '20px' : '60px' }}>
-      <List sx={{
-        backgroundColor: '#FFFFFF',
-        fontWeight: 'bold',
-        height: isTablet ? 'unset' : '588px',
-        width: getWidth(),
-        fontSize: getFontSize(),
-        pl: isTablet ? 0 : '12px',
-        pt: isTablet ? 0 : '32px',
-        mr: '20px',
+export const ContactInfo: React.FC = () => (
+  <Box sx={{
+    width: '100%',
+    mt: {
+      laptop: '192px',
+      xs: '20px',
+    },
+    pb: {
+      laptop: '60px',
+      xs: '20px',
+    },
+  }}
+  >
+    <List sx={{
+      backgroundColor: '#FFFFFF',
+      fontWeight: 'bold',
+      height: {
+        laptop: '588px',
+        xs: 'unset',
+      },
+      width: {
+        desktopSmall: '450px',
+        laptopBig: '80%',
+        xs: '85%',
+      },
+      fontSize: {
+        xs: '16px',
+        laptop: '18px',
+        desktopSmall: '20px',
+      },
+      pl: {
+        laptop: '12px',
+        xs: 0,
+      },
+      pt: {
+        laptop: '32px',
+        xs: 0,
+      },
+      mr: '20px',
+    }}
+    >
+      <ListItem sx={{
+        mb: '12px',
+        pl: {
+          laptop: '16px',
+          xs: 0,
+        },
       }}
       >
-        <ListItem sx={{ mb: '12px', pl: isTablet ? 0 : '16px' }}>
-          <MailOutlineIcon sx={{
-            width: '30px', height: '30px', mr: '10px',
-          }}
-          />
-          {' '}
-          contact.devincubator@gmail.com
-        </ListItem>
-        <ListItem sx={{ pl: isTablet ? 0 : '16px' }}>
-          <LocationOnOutlinedIcon sx={{ width: '30px', height: '30px', mr: '10px' }} />
-          Gdansk, Poland
-        </ListItem>
-      </List>
-    </Box>
-  )
-}
+        <MailOutlineIcon sx={{
+          width: '30px', height: '30px', mr: '10px',
+        }}
+        />
+        {' '}
+        contact.devincubator@gmail.com
+      </ListItem>
+      <ListItem sx={{
+        pl: {
+          laptop: '16px',
+          xs: 0,
+        },
+      }}
+      >
+        <LocationOnOutlinedIcon sx={{ width: '30px', height: '30px', mr: '10px' }} />
+        Gdansk, Poland
+      </ListItem>
+    </List>
+  </Box>
+)

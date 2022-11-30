@@ -30,8 +30,6 @@ const MENU_ITEMS = [
 export const Navbar: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false)
 
-  const isLaptop = useMediaQuery('(max-width:1200px)')
-  const isTablet = useMediaQuery('(max-width:992px)')
   const isMobile = useMediaQuery('(max-width:800px)')
 
   const handleMenuOpen = () => setShowMenu(true)
@@ -39,52 +37,79 @@ export const Navbar: React.FC = () => {
 
   return (
     <nav>
-      <Box sx={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        px: isTablet ? '20px' : '60px',
-        height: '80px',
-        backgroundColor: '#F8F9FA',
-      }}
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          px: {
+            tabletBig: '60px',
+            xs: '20px',
+          },
+          height: '80px',
+          backgroundColor: '#F8F9FA',
+        }}
       >
-        <Box sx={{ fontSize: isTablet ? '28px' : '32px', display: 'flex', alignItems: 'center' }}>
+        <Box sx={{
+          fontSize: {
+            tabletBig: '32px',
+            xs: '28px',
+          },
+          display: 'flex',
+          alignItems: 'center',
+        }}
+        >
           <img src={devIncLogo} alt="logo" />
-          <Box component="span" sx={{ ml: '15px' }}>devIncubator</Box>
+          <Box component="span" sx={{ ml: '15px' }}>
+            devIncubator
+          </Box>
         </Box>
         <Box sx={{ display: 'flex' }}>
-          {!isMobile && MENU_ITEMS.map((menuItem) => (
-            <Box
-              key={menuItem.title}
-              component="span"
-              sx={{
-                mr: isLaptop ? '20px' : '42px',
-                fontSize: isLaptop ? '20px' : '22px',
-                '&:last-of-type': {
-                  mr: 0,
-                },
-              }}
-            >
-              <Link
-                href={menuItem.link}
+          {!isMobile
+            && MENU_ITEMS.map((menuItem) => (
+              <Box
+                key={menuItem.title}
+                component="span"
                 sx={{
-                  color: '#000000',
-                  textDecoration: 'none',
-                  transition: '.2s',
-                  '&:hover': {
-                    color: '#D2042D',
+                  mr: {
+                    laptop: '42px',
+                    xs: '20px',
+                  },
+                  fontSize: {
+                    laptop: '22px',
+                    xs: '20px',
+                  },
+                  '&:last-of-type': {
+                    mr: 0,
                   },
                 }}
               >
-                {menuItem.title}
-              </Link>
-            </Box>
-          ))}
-          {isMobile && <Box component="img" src={hamburgerIcon} alt="hamburger-icon" onClick={handleMenuOpen} />}
+                <Link
+                  href={menuItem.link}
+                  sx={{
+                    color: '#000000',
+                    textDecoration: 'none',
+                    transition: '.2s',
+                    '&:hover': {
+                      color: '#D2042D',
+                    },
+                  }}
+                >
+                  {menuItem.title}
+                </Link>
+              </Box>
+            ))}
+          {isMobile && (
+            <Box
+              component="img"
+              src={hamburgerIcon}
+              alt="hamburger-icon"
+              onClick={handleMenuOpen}
+            />
+          )}
           {showMenu && <HamburgerMenu items={MENU_ITEMS} onMenuClose={handleMenuClose} />}
         </Box>
       </Box>
     </nav>
-
   )
 }

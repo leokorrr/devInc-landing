@@ -4,7 +4,6 @@ import { Title } from '../../ui/components/Title'
 import aboutUsImage from '../../assets/about-us.jpg'
 
 export const AboutUs: React.FC = () => {
-  const isLaptop = useMediaQuery('(max-width:1200px)')
   const isTablet = useMediaQuery('(max-width:768px)')
 
   return (
@@ -16,51 +15,73 @@ export const AboutUs: React.FC = () => {
         mb: '60px',
       }}
     >
-      <Box sx={{
-        maxWidth: '1480px',
-        width: '100%',
-        px: '20px',
-      }}
+      <Box
+        sx={{
+          maxWidth: '1480px',
+          width: '100%',
+          px: '20px',
+        }}
       >
         <Title title="About us" size={2} />
-        <Box sx={{
-          display: 'flex',
-          justifyContent: 'center',
-        }}
-        >
-          <Box sx={{
-            maxWidth: '1200px',
-            width: '100%',
+        <Box
+          sx={{
             display: 'flex',
             justifyContent: 'center',
-            gap: isLaptop ? '20px' : '190px',
           }}
+        >
+          <Box
+            sx={{
+              maxWidth: '1200px',
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'center',
+              gap: {
+                laptop: '190px',
+                xs: '20px',
+              },
+            }}
           >
             {!isTablet && (
-              <Box sx={{ width: isLaptop ? '50%' : '100%' }}>
+              <Box
+                sx={{
+                  width: {
+                    laptop: '100%',
+                    xs: '50%',
+                  },
+                }}
+              >
                 <Box component="img" sx={{ width: '100%' }} src={aboutUsImage} alt="about-us" />
               </Box>
             )}
-            <Box sx={{ fontSize: isLaptop ? '18px' : '20px', maxWidth: isTablet ? 'none' : '372px' }}>
-              <Box component="p" sx={{ mt: isTablet ? 0 : '18px' }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, orci
-                aliquet,  metus risus maximus nunc, sed eleifend tortor enim id nisl.
-              </Box>
-              <Box component="p" sx={{ mt: isTablet ? 0 : '18px' }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque, orci
-                aliquet,  metus risus maximus nunc, sed eleifend tortor enim id nisl.
-              </Box>
-              {/* <Box component="p" sx={{ mt: isTablet ? 0 : '18px' }}>
+            <Box
+              sx={{
+                fontSize: {
+                  laptop: '20px',
+                  xs: '18px',
+                },
+                maxWidth: {
+                  tablet: '372px',
+                  xs: 'none',
+                },
+              }}
+            >
+              <Box
+                component="p"
+                sx={{
+                  mt: {
+                    tablet: '18px',
+                    xs: 0,
+                  },
+                }}
+              >
                 We are a polish community of programmers working together
                 to optimize your business, so you&apos;ll have more time for really important things
               </Box>
               <Box component="p">
                 We are experts in web applications. Out stack is HTML5, CSS3, JavaScript
                 (React, Node) and PHP (Symfony, Laravel, Magento 2).
-              </Box> */}
-              <Box sx={{ fontWeight: 'bold' }}>
-                Start your story with us!
               </Box>
+              <Box sx={{ fontWeight: 'bold' }}>Start your story with us!</Box>
             </Box>
           </Box>
         </Box>

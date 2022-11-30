@@ -1,4 +1,4 @@
-import { Box, useMediaQuery } from '@mui/material'
+import { Box } from '@mui/material'
 import React from 'react'
 import automatizationIcon from '../../assets/automatizationicon.svg'
 import corporateWebsite from '../../assets/corpwebsiteicon.svg'
@@ -30,42 +30,44 @@ const SERVICES = [
   },
 ]
 
-export const Services: React.FC = () => {
-  const isTablet = useMediaQuery('(max-width:1240px)')
-
-  return (
+export const Services: React.FC = () => (
+  <Box sx={{
+    display: 'flex',
+    justifyContent: 'center',
+    backgroundColor: '#F8F9FA',
+  }}
+  >
     <Box sx={{
-      display: 'flex',
-      justifyContent: 'center',
-      backgroundColor: '#F8F9FA',
+      maxWidth: '1480px',
+      width: '100%',
+      px: '20px',
+      overflowY: {
+        laptopMedium: 'unset',
+        xs: 'scroll',
+      },
+      height: '350px',
+      '&::-webkit-scrollbar': {
+        display: 'none',
+      },
     }}
     >
       <Box sx={{
-        maxWidth: '1480px',
-        width: '100%',
-        px: '20px',
-        overflowY: isTablet ? 'scroll' : 'unset',
-        height: '350px',
-        '&::-webkit-scrollbar': {
-          display: 'none',
+        display: 'flex',
+        justifyContent: {
+          laptopMedium: 'center',
+          xs: 'none',
         },
+        gap: '20px',
       }}
       >
-        <Box sx={{
-          display: 'flex',
-          justifyContent: isTablet ? 'none' : 'center',
-          gap: '20px',
-        }}
-        >
-          {SERVICES.map((service) => (
-            <ServiceCard
-              key={service.title}
-              title={service.title}
-              icon={service.icon}
-            />
-          ))}
-        </Box>
+        {SERVICES.map((service) => (
+          <ServiceCard
+            key={service.title}
+            title={service.title}
+            icon={service.icon}
+          />
+        ))}
       </Box>
     </Box>
-  )
-}
+  </Box>
+)

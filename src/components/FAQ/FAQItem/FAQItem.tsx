@@ -1,14 +1,12 @@
-import { Box, useMediaQuery } from '@mui/material'
+import { Box } from '@mui/material'
 import React, { useState } from 'react'
-import IFAQItem from './FAQItem.interface'
 import arrowIcon from '../../../assets/arrowicon.svg'
+import IFAQItem from './FAQItem.interface'
 
 export const FAQItem: React.FC<IFAQItem> = (props) => {
   const { question, answer } = props
 
   const [isOpen, setIsOpen] = useState(false)
-
-  const isMobile = useMediaQuery('(max-width:768px)')
 
   const handleFAQState = () => setIsOpen(!isOpen)
 
@@ -16,7 +14,10 @@ export const FAQItem: React.FC<IFAQItem> = (props) => {
     <Box sx={{ maxWidth: '960px', mb: '32px' }}>
       <Box
         sx={{
-          fontSize: isMobile ? '24px' : '28px',
+          fontSize: {
+            tablet: '28px',
+            xs: '24px',
+          },
           fontWeight: 'bold',
           '&:hover': {
             cursor: 'pointer',
