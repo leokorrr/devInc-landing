@@ -1,7 +1,7 @@
 import {
   Box, Button, Input, TextareaAutosize,
 } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useState, ChangeEvent, MouseEvent } from 'react'
 
 const INPUTS = [
   {
@@ -23,37 +23,47 @@ const INPUTS = [
 
 const EMAIL_REGEX_PATTERN = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
+type FormValues = {
+  name: string
+  email: string
+  phone: string
+  message: string
+}
+
+type FormErrors = Omit<FormValues, 'phone'>
+
 export const ContactForm: React.FC = () => {
-  const [formValues, setFormValues] = useState<any>({
+  const [formValues, setFormValues] = useState<FormValues>({
     name: '',
     email: '',
     phone: '',
     message: '',
   })
 
-  const [errors, setErrors] = useState<any>({
+  const [errors, setErrors] = useState<FormErrors>({
     name: '',
     email: '',
     message: '',
   })
 
-  const handleInput = (paramName: string) => (event: any) => {
+  // eslint-disable-next-line max-len
+  const handleInput = (paramName: string) => (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { value } = event.target
     setFormValues({ ...formValues, [paramName]: value })
   }
 
-  const handleFormSend = (event: any) => {
+  const handleFormSend = (event: MouseEvent) => {
     event.preventDefault()
 
-    const validationErrors: any = {
+    const validationErrors: FormErrors = {
       name: '',
       email: '',
       message: '',
     }
 
-    Object.keys(formValues).forEach((key) => {
-      if (formValues[key] === '' && key !== 'phone') {
-        validationErrors[key] = `${key.charAt(0).toUpperCase()}${key.slice(1)} is required`
+    Object.keys(formValues).forEach((key: string) => {
+      if (formValues[key as keyof FormValues] === '' && key !== 'phone') {
+        validationErrors[key as keyof FormErrors] = `${key.charAt(0).toUpperCase()}${key.slice(1)} is required`
       }
 
       if (formValues.email && !formValues.email.toLowerCase().match(EMAIL_REGEX_PATTERN)) {
@@ -65,23 +75,20 @@ export const ContactForm: React.FC = () => {
   }
 
   return (
-    <Box sx={{
-      backgroundColor: '#000000',
-      p: {
-        laptop: '40px',
-        xs: '20px',
-      },
-      width: {
-        desktopSmall: '990px',
-        xs: '100%',
-      },
-    }}
+    <Box
+      sx={{
+        backgroundColor: '#000000',
+        p: {
+          laptop: '40px',
+          xs: '20px',
+        },
+        width: {
+          desktopSmall: '990px',
+          xs: '100%',
+        },
+      }}
     >
-      <Box
-        component="form"
-        sx={{ display: 'flex', flexDirection: 'column' }}
-        noValidate
-      >
+      <Box component="form" sx={{ display: 'flex', flexDirection: 'column' }} noValidate>
         {INPUTS.map((input) => (
           <Box key={input.title} sx={{ width: '100%', mb: '24px' }}>
             <Input
@@ -101,7 +108,9 @@ export const ContactForm: React.FC = () => {
                 },
               }}
             />
-            {errors[input.title] && input.isRequired && <Box sx={{ color: 'red', fontSize: '14px' }}>{errors[input.title]}</Box>}
+            {errors[input.title as keyof FormErrors] && input.isRequired && (
+              <Box sx={{ color: 'red', fontSize: '14px' }}>{errors[input.title as keyof FormErrors]}</Box>
+            )}
           </Box>
         ))}
         <Box sx={{ mb: '32px', width: '100%' }}>
@@ -128,15 +137,15 @@ export const ContactForm: React.FC = () => {
           />
           {errors.message && <Box sx={{ color: 'red', fontSize: '14px' }}>{errors.message}</Box>}
         </Box>
-        <Box sx={{
-          display: 'flex',
-          flexDirection: 'row-reverse',
-          justifyContent: {
-            tablet: 'flex-starts',
-            xs: 'center',
-          },
-          // justifyContent: isMobile ? 'center' : 'flex-starts',
-        }}
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'row-reverse',
+            justifyContent: {
+              tablet: 'flex-start',
+              xs: 'center',
+            },
+          }}
         >
           <Button
             variant="contained"

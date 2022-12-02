@@ -63,7 +63,7 @@ export const Projects: React.FC = () => (
             tablet: 'unset',
             xs: 'column',
           },
-          gridTemplateRows: 'repeat(2, 1fr)',
+          gridTemplateRows: 'repeat(1, 1fr)',
           gridTemplateColumns: {
             laptop: 'repeat(3, 1fr)',
             xs: 'repeat(2, 1fr)',

@@ -59,7 +59,7 @@ export const ContactInfo: React.FC = () => (
         }}
         />
         {' '}
-        contact.devincubator@gmail.com
+        leonid.kochetcov@gmail.com
       </ListItem>
       <ListItem sx={{
         pl: {
