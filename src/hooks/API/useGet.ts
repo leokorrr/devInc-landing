@@ -16,6 +16,7 @@ const useGet = (apiUrl: string) => {
         setIsLoading(false)
       })
       .catch((err) => {
+        setIsLoading(false)
         const msg: string = err.message
         setError(msg)
       })
@@ -25,11 +26,11 @@ const useGet = (apiUrl: string) => {
     getData(apiUrl)
   }, [])
 
-  return [
+  return {
     data,
     isLoading,
     error,
-  ] as const
+  } as const
 }
 
 export default useGet
