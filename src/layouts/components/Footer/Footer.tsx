@@ -9,12 +9,9 @@ type IconsOptions = {
 }
 
 type SocialLink = {
-  //  TODO: remove id from return array
   id: number
   ulid: string
   link: string
-  // TODO: remove imageUrl from BE
-  imageUrl: string
   title: string
   createdAt: string
   updatedAt: string
@@ -62,7 +59,7 @@ export const Footer: React.FC = () => {
             <CircularProgress size={16} sx={{ color: '#000000' }} />
           ) : (
             <div>
-              {error ? <Box component="p" sx={{ fontSize: '12px', m: 0 }}>Something went wrong went loading data</Box> : (
+              {error ? <Box component="p" sx={{ fontSize: '12px', m: 0 }}>Something went wrong when loading data</Box> : (
                 <>
                   {socialLinks.map((socialLink: SocialLink) => (
                     <Link key={socialLink.ulid} sx={{ display: 'flex' }} href={socialLink.link}>
