@@ -77,7 +77,7 @@ export const Projects: React.FC = () => {
                   },
                 }}
                 >
-                  {projects.map((project: Project) => (
+                  {projects?.map((project: Project) => (
                     <ProjectCard
                       key={project.ulid}
                       name={project.title}
