@@ -74,14 +74,15 @@ export const AboutUs: React.FC = () => {
                   },
                 }}
               >
-                We are a polish community of programmers working together
-                to optimize your business, so you&apos;ll have more time for really important things
+                Hi! My name is Leo! I&apos;m a professional fullstack developer with 5+ years of
+                experience. My job is to optimize your business, so you&apos;ll have more time
+                for really important things
               </Box>
               <Box component="p">
-                We are experts in web applications. Out stack is HTML5, CSS3, JavaScript
-                (React, Node) and PHP (Symfony, Laravel, Magento 2).
+                I&apos;m an expert in web applications. My stack is React, Next, Typescript, Node,
+                Express, Nest and more...
               </Box>
-              <Box sx={{ fontWeight: 'bold' }}>Start your story with us!</Box>
+              <Box sx={{ fontWeight: 'bold' }}>Contact me and let&apos;s see what can we do together</Box>
             </Box>
           </Box>
         </Box>
