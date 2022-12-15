@@ -1,9 +1,11 @@
 import React from 'react'
 import { AboutUs } from '../../components/AboutUs'
 import { ContactUs } from '../../components/ContactUs'
-import { FAQ } from '../../components/FAQ'
+// !IMPORTANT uncomment when develop content for FAQ
+// import { FAQ } from '../../components/FAQ'
 import { Intro } from '../../components/Intro'
 import { Projects } from '../../components/Projects'
+import { Reviews } from '../../components/Reviews'
 import { Services } from '../../components/Services'
 
 export const ContentPage: React.FC = () => (
@@ -12,7 +14,9 @@ export const ContentPage: React.FC = () => (
     <Services />
     <Projects />
     <AboutUs />
-    <FAQ />
+    <Reviews />
+    {/* !IMPORTANT uncomment when develop content for FAQ  */}
+    {/* <FAQ /> */}
     <ContactUs />
   </div>
 )
