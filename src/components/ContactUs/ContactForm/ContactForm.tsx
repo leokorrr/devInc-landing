@@ -52,8 +52,8 @@ export const ContactForm: React.FC = () => {
     setFormValues({ ...formValues, [paramName]: value })
   }
 
-  const handleFormSend = (event: MouseEvent) => {
-    event.preventDefault()
+  const handleFormValidation = () => {
+    let isError = false
 
     const validationErrors: FormErrors = {
       name: '',
@@ -64,14 +64,27 @@ export const ContactForm: React.FC = () => {
     Object.keys(formValues).forEach((key: string) => {
       if (formValues[key as keyof FormValues] === '' && key !== 'phone') {
         validationErrors[key as keyof FormErrors] = `${key.charAt(0).toUpperCase()}${key.slice(1)} is required`
+        isError = true
       }
 
       if (formValues.email && !formValues.email.toLowerCase().match(EMAIL_REGEX_PATTERN)) {
         validationErrors.email = 'Provide valid email'
+        isError = true
       }
     })
 
     setErrors(validationErrors)
+
+    return isError
+  }
+
+  const handleFormSend = (event: MouseEvent) => {
+    event.preventDefault()
+    const isError = handleFormValidation()
+
+    if (!isError) {
+      console.log('no err')
+    }
   }
 
   return (

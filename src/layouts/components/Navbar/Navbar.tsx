@@ -18,8 +18,8 @@ const MENU_ITEMS = [
     link: '#about-us',
   },
   {
-    title: 'FAQ',
-    link: '#faq',
+    title: 'Reviews',
+    link: '#reviews',
   },
   {
     title: 'Contact',

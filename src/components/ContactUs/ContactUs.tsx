@@ -36,7 +36,7 @@ export const ContactUs = () => (
       <Box sx={{
         backgroundColor: {
           laptop: '#000000',
-          xs: 'trasparent',
+          xs: 'transparent',
         },
       }}
       >
