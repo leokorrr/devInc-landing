@@ -22,7 +22,7 @@ export const AboutUs: React.FC = () => {
           px: '20px',
         }}
       >
-        <Title title="About us" size={2} />
+        <Title title="About" size={2} />
         <Box
           sx={{
             display: 'flex',

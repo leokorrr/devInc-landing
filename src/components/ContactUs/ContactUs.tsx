@@ -30,7 +30,7 @@ export const ContactUs = () => (
     }}
     >
       <Box>
-        <Title title="Contact us" size={2} />
+        <Title title="Contact" size={2} />
         <ContactForm />
       </Box>
       <Box sx={{

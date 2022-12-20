@@ -2,7 +2,7 @@ import { Box } from '@mui/material'
 import React from 'react'
 import automatizationIcon from '../../assets/automatizationicon.svg'
 import corporateWebsite from '../../assets/corpwebsiteicon.svg'
-import mobileAppIcon from '../../assets/mobileappicon.svg'
+import codeReviewIcon from '../../assets/codereviewicon.svg'
 import userManagementSystemIcon from '../../assets/umsicon.svg'
 import webAppIcon from '../../assets/webappicon.svg'
 import { ServiceCard } from './ServiceCard/ServiceCard'
@@ -21,8 +21,8 @@ const SERVICES = [
     title: 'Business Automatization',
   },
   {
-    icon: mobileAppIcon,
-    title: 'Mobile App',
+    icon: codeReviewIcon,
+    title: 'Codebase review',
   },
   {
     icon: userManagementSystemIcon,
