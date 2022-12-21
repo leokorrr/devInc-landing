@@ -14,7 +14,7 @@ const MENU_ITEMS = [
     link: '#portfolio',
   },
   {
-    title: 'About us',
+    title: 'About',
     link: '#about-us',
   },
   {
