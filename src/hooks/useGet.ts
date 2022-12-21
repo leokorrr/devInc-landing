@@ -2,7 +2,6 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 
 const useGet = (apiUrl: string) => {
-  const BASE_URL: string | undefined = process.env.REACT_APP_BACKEND_URL
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [error, setError] = useState<string>('')
@@ -10,7 +9,7 @@ const useGet = (apiUrl: string) => {
   const getData = async (url: string) => {
     setIsLoading(true)
     setError('')
-    await axios.get(`${BASE_URL}/${url}`)
+    await axios.get(`${process.env.REACT_APP_BACKEND_URL}/${url}`)
       .then((res) => {
         setData(res.data)
         setIsLoading(false)

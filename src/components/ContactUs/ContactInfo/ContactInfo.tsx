@@ -4,7 +4,7 @@ import {
   Box, List, ListItem, CircularProgress,
 } from '@mui/material'
 import React, { useState, useEffect } from 'react'
-import useGet from '../../../hooks/API/useGet'
+import useGet from '../../../hooks/useGet'
 
 type ContactData = {
   id: number

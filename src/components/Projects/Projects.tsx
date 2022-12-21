@@ -1,6 +1,6 @@
 import { Box, CircularProgress } from '@mui/material'
 import React from 'react'
-import useGet from '../../hooks/API/useGet'
+import useGet from '../../hooks/useGet'
 import { Title } from '../../ui/components/Title'
 import { ProjectCard } from './ProjectCard'
 

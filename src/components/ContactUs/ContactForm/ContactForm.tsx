@@ -1,7 +1,10 @@
 import {
-  Box, Button, Input, TextareaAutosize,
+  Box, Button, Input, TextareaAutosize, CircularProgress,
 } from '@mui/material'
-import React, { useState, ChangeEvent, MouseEvent } from 'react'
+import React, {
+  useState, ChangeEvent, MouseEvent,
+} from 'react'
+import emailjs from '@emailjs/browser'
 
 const INPUTS = [
   {
@@ -23,6 +26,13 @@ const INPUTS = [
 
 const EMAIL_REGEX_PATTERN = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
+const INIT_FORM_VALUES = {
+  name: '',
+  email: '',
+  phone: '',
+  message: '',
+}
+
 type FormValues = {
   name: string
   email: string
@@ -33,18 +43,14 @@ type FormValues = {
 type FormErrors = Omit<FormValues, 'phone'>
 
 export const ContactForm: React.FC = () => {
-  const [formValues, setFormValues] = useState<FormValues>({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-  })
-
+  const [formValues, setFormValues] = useState<FormValues>(INIT_FORM_VALUES)
   const [errors, setErrors] = useState<FormErrors>({
     name: '',
     email: '',
     message: '',
   })
+  const [isFormSending, setIsFormSending] = useState<boolean>(false)
+  const [isFormSendingError, setIsFormSendingError] = useState<boolean>(false)
 
   // eslint-disable-next-line max-len
   const handleInput = (paramName: string) => (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -78,12 +84,30 @@ export const ContactForm: React.FC = () => {
     return isError
   }
 
-  const handleFormSend = (event: MouseEvent) => {
+  const handleFormSend = async (event: MouseEvent) => {
     event.preventDefault()
+
     const isError = handleFormValidation()
 
     if (!isError) {
-      console.log('no err')
+      setIsFormSending(true)
+      setIsFormSendingError(false)
+
+      try {
+        const res = await emailjs.sendForm(
+          process.env.REACT_APP_EMAIL_SERVICE_ID,
+          process.env.REACT_APP_EMAIL_TEMPLATE_ID,
+          '#contact-form',
+          process.env.REACT_APP_EMAIL_PUBLIC_KEY,
+        )
+
+        if (res.status === 200) setFormValues(INIT_FORM_VALUES)
+      } catch (error) {
+        setIsFormSendingError(true)
+        console.log(error)
+      }
+
+      setIsFormSending(false)
     }
   }
 
@@ -101,7 +125,8 @@ export const ContactForm: React.FC = () => {
         },
       }}
     >
-      <Box component="form" sx={{ display: 'flex', flexDirection: 'column' }} noValidate>
+      <Box id="contact-form" component="form" sx={{ display: 'flex', flexDirection: 'column' }} noValidate>
+        {isFormSendingError && <Box sx={{ color: 'red', fontSize: '16px', mb: '16px' }}>Something went wrong sending your mail. Try again or write directly at provided email.</Box>}
         {INPUTS.map((input) => (
           <Box key={input.title} sx={{ width: '100%', mb: '24px' }}>
             <Input
@@ -109,6 +134,8 @@ export const ContactForm: React.FC = () => {
               required={input.isRequired}
               disableUnderline
               onChange={handleInput(input.title)}
+              name={input.title}
+              value={formValues[input.title as keyof FormErrors]}
               sx={{
                 color: '#FFFFFF',
                 borderBottom: '2px solid #FFFFFF',
@@ -132,6 +159,8 @@ export const ContactForm: React.FC = () => {
             minRows={8}
             placeholder="Your Message"
             onChange={handleInput('message')}
+            name="message"
+            value={formValues.message}
             style={{
               width: '100%',
               color: '#FFFFFF',
@@ -183,6 +212,7 @@ export const ContactForm: React.FC = () => {
               },
             }}
           >
+            {isFormSending && <CircularProgress size={16} sx={{ color: '#000000', mr: '8px' }} />}
             Send
           </Button>
         </Box>

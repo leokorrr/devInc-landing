@@ -1,4 +1,4 @@
-import { Box, useMediaQuery } from '@mui/material'
+import { Box, Link, useMediaQuery } from '@mui/material'
 import React from 'react'
 import { Title } from '../../ui/components/Title'
 import aboutUsImage from '../../assets/about-us.jpg'
@@ -82,7 +82,22 @@ export const AboutUs: React.FC = () => {
                 I&apos;m an expert in web applications. My stack is React, Next, Typescript, Node,
                 Express, Nest and more...
               </Box>
-              <Box sx={{ fontWeight: 'bold' }}>Contact me and let&apos;s see what can we do together</Box>
+              <Box sx={{ fontWeight: 'bold' }}>
+                <Link
+                  href="#contact"
+                  sx={{
+                    color: '#000000',
+                    textDecoration: 'none',
+                    transition: '.2s',
+                    '&:hover': {
+                      color: '#D2042D',
+                    },
+                  }}
+                >
+                  Contact me and let&apos;s see what can we do together
+                </Link>
+
+              </Box>
             </Box>
           </Box>
         </Box>

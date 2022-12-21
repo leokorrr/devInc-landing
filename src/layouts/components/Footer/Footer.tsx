@@ -2,7 +2,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import { Box, CircularProgress } from '@mui/material'
 import Link from '@mui/material/Link'
 import React from 'react'
-import useGet from '../../../hooks/API/useGet'
+import useGet from '../../../hooks/useGet'
 
 type IconsOptions = {
   [key: string]: React.ReactElement
