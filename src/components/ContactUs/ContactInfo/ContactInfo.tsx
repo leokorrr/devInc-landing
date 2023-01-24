@@ -21,9 +21,7 @@ export const ContactInfo: React.FC = () => {
   const { data: contactInfoArray, isLoading, error } = useGet('contact-info')
 
   useEffect(() => {
-    if (!isLoading && !error) {
-      setContactInfo(contactInfoArray[0])
-    }
+    if (!isLoading && !error) setContactInfo(contactInfoArray[0])
   }, [contactInfoArray])
 
   return (
