@@ -41,7 +41,7 @@ export const ContactInfo: React.FC = () => {
         backgroundColor: '#FFFFFF',
         fontWeight: 'bold',
         height: {
-          laptop: '588px',
+          laptop: '594px',
           xs: 'unset',
         },
         width: {
