@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 
-const useGet = (apiUrl: string) => {
+const useGet = (endpoint: string) => {
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [error, setError] = useState<string>('')
@@ -22,7 +22,7 @@ const useGet = (apiUrl: string) => {
   }
 
   useEffect(() => {
-    getData(apiUrl)
+    getData(endpoint)
   }, [])
 
   return {
