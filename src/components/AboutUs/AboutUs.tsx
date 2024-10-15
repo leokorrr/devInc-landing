@@ -12,23 +12,20 @@ export const AboutUs: React.FC = () => {
       sx={{
         display: 'flex',
         justifyContent: 'center',
-        mb: '60px',
-      }}
-    >
+        mb: '60px'
+      }}>
       <Box
         sx={{
           maxWidth: '1480px',
           width: '100%',
-          px: '20px',
-        }}
-      >
+          px: '20px'
+        }}>
         <Title title="About" size={2} />
         <Box
           sx={{
             display: 'flex',
-            justifyContent: 'center',
-          }}
-        >
+            justifyContent: 'center'
+          }}>
           <Box
             sx={{
               maxWidth: '1200px',
@@ -37,19 +34,17 @@ export const AboutUs: React.FC = () => {
               justifyContent: 'center',
               gap: {
                 laptop: '190px',
-                xs: '20px',
-              },
-            }}
-          >
+                xs: '20px'
+              }
+            }}>
             {!isTablet && (
               <Box
                 sx={{
                   width: {
                     laptop: '100%',
-                    xs: '50%',
-                  },
-                }}
-              >
+                    xs: '50%'
+                  }
+                }}>
                 <Box component="img" sx={{ width: '100%' }} src={aboutUsImage} alt="about-us" />
               </Box>
             )}
@@ -57,30 +52,27 @@ export const AboutUs: React.FC = () => {
               sx={{
                 fontSize: {
                   laptop: '20px',
-                  xs: '18px',
+                  xs: '18px'
                 },
                 maxWidth: {
-                  tablet: '372px',
-                  xs: 'none',
-                },
-              }}
-            >
+                  tablet: '500px',
+                  xs: 'none'
+                }
+              }}>
               <Box
                 component="p"
                 sx={{
                   mt: {
                     tablet: '18px',
-                    xs: 0,
-                  },
-                }}
-              >
-                Hi! My name is Leo! I&apos;m a professional fullstack developer with 5+ years of
-                experience. My job is to optimize your business, so you&apos;ll have more time
-                for really important things
-              </Box>
-              <Box component="p">
-                I&apos;m an expert in web applications. My stack is React, Next, Typescript, Node,
-                Express, Nest and more...
+                    xs: 0
+                  }
+                }}>
+                At devInc, we specialize in web development for early-stage startups, helping you
+                turn ideas into functional, scalable MVPs. Our team of full-stack web developers
+                understands the need for speed and flexibility in startup environments. We create
+                custom web solutions that allow you to launch quickly, validate your product, and
+                scale your business. Whether you need a responsive website or a complex web app,
+                we&apos;re here to ensure your vision becomes reality—efficiently and effectively.
               </Box>
               <Box sx={{ fontWeight: 'bold' }}>
                 <Link
@@ -90,13 +82,11 @@ export const AboutUs: React.FC = () => {
                     textDecoration: 'none',
                     transition: '.2s',
                     '&:hover': {
-                      color: '#D2042D',
-                    },
-                  }}
-                >
+                      color: '#D2042D'
+                    }
+                  }}>
                   Contact me and let&apos;s see what can we do together
                 </Link>
-
               </Box>
             </Box>
           </Box>
